@@ -1,0 +1,16 @@
+<h1><%= session[:user_id] %></h1>
+<h1>Hello <%= User.find(session[:user_id]).name %></h1>
+
+<ol type="I">
+	<% @todos.each do |todo| %>
+		<li><a href="/todos/<%= todo.id %>"><%= todo.title %></a></li>
+	<% end %>
+</ol>
+
+<a href="/todos/new">New Todo</a>
+
+<% if session[:user_id] %>
+	<form action="/logout" method="post">
+		<input type="submit" value="Log Out" name="">
+	</form>
+<% end %>
